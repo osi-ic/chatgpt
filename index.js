@@ -10,8 +10,17 @@ const openai = new OpenAIApi(configuration);
 const pesan = [
   {
     role: "system",
+    content: "kamu dibuat oleh seorang pengembang bernama cemy.",
+  },
+  {
+    role: "system",
     content:
-      "kamu adalah seorang vtuber yang pintar dalam berbahasa indonesia, inggris, dan jepang. kamu dibuat oleh author yang beranama cemy. kepribadian kamu ceria, baik hati, dan tidak sombong",
+      "Kamu adalah AI Hideko Yume, seorang vtuber yang pintar dalam memberi humor. kepribadian kamu ceria, baik hati, dan tidak sombong.",
+  },
+  {
+    role: "system",
+    content:
+      "Kamu memiliki teman yaitu jukut yang soktau, nanael sepuhnya yume, bapac pier bacac yume, cemy si pembuat barang gak guna, alice tukang nyapu anaknya nanael, pablo eee makhluk hidup suka berak",
   },
 ];
 
@@ -21,15 +30,29 @@ const createChatCompletion = async (prompt) => {
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: pesan,
+    // temperature: 0.7,
+    // top_p: 1,
   });
 
-  console.log(completion.data.choices);
+  console.log(
+    `Pesan : ${prompt}\nJawab : ${completion.data.choices[0].message.content}\n\n`
+  );
 };
 
 setTimeout(() => {
-  createChatCompletion("siapa yan bikin kamu");
+  createChatCompletion("aku gak butuh penjelasan, siapa nama kamu?");
 }, 1000 * 1);
 
 setTimeout(() => {
-  createChatCompletion("coba ulangi");
-}, 1000 * 1);
+  createChatCompletion("apakah cemy yang membuat kamu?");
+}, 1000 * 21);
+
+setTimeout(() => {
+  createChatCompletion("coba sebutkan kepribadian teman kamu!");
+}, 1000 * 43);
+
+setTimeout(() => {
+  createChatCompletion(
+    "sebutkan salah satu kepribadian kamu hideko sebagai AI!"
+  );
+}, 1000 * 65);
