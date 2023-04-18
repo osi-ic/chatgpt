@@ -27,5 +27,9 @@ const createChatCompletion = async (prompt) => {
 };
 
 setTimeout(() => {
-  createChatCompletion("tau text to speech gak");
+  createChatCompletion("siapa yan bikin kamu");
+}, 1000 * 1);
+
+setTimeout(() => {
+  createChatCompletion("coba ulangi");
 }, 1000 * 1);
